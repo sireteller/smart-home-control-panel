@@ -2,26 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
 
-## Development server
+Designed in [Figma](https://www.figma.com/file/LgnS4h4b0OX4l7WlG3heiP/Drafts?type=design&node-id=102%3A54&mode=design&t=mbB1XUqye9N47KaC-1)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+The idea for this originated when I picked up my old tablet after years of it collecting dust in a cabinet. 
+Since the OS was old and the storage small, I couldn't really install anything on it, but I was still
+set on making use of the device, either as part of an art project or a smart home controller.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+My partner had the great idea that even though we can't install native apps, we *could* make a web app.
+I could make the front, he could make the back.
 
-## Build
+And so I spent a Sunday designing an interface for a smart home central that would suit our needs.
+This included checking the weather, controlling the A/C, smart lights and robot vaccuum, and modifying our
+shopping list. The biggest limitation being that the app had to run on Chrome 40 and should fit on the screen without scrolling
+to prevent lag.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This repo uses a mock backend that queries real weather data from local weather service provider ilmateenistus.ee,
+and current time comes from native javascript functions, but the rest of the data is dummy data for the sake of privacy.
