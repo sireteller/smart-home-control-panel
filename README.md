@@ -1,4 +1,4 @@
-# SmartHomeControlPanel
+# Smart Home Control Panel
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
 
@@ -15,7 +15,7 @@ I could make the front, he could make the back.
 
 And so I spent a Sunday designing an interface for a smart home central that would suit our needs.
 This included checking the weather, controlling the A/C, smart lights and robot vaccuum, and modifying our
-shopping list. The biggest limitation being that the app had to run on Chrome 40 and should fit on the screen without scrolling
+shopping list. The biggest limitation being that the app had to run on Chrome 42 and should fit on the screen without scrolling
 to prevent lag.
 
 This repo uses a mock backend that queries real weather data from local weather service provider ilmateenistus.ee,
