@@ -1,7 +1,6 @@
 # Smart Home Control Panel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
-
+Built with vanilla HTML, CSS & JavaScript
 Designed in [Figma](https://www.figma.com/file/LgnS4h4b0OX4l7WlG3heiP/Drafts?type=design&node-id=102%3A54&mode=design&t=mbB1XUqye9N47KaC-1)
 
 ---
