@@ -11,7 +11,8 @@ function updateTime() {
     day: "numeric",
   };
   const clockOptions = {
-    timeStyle: "short",
+    hour: "numeric",
+    minute: "numeric",
   };
 
   clock.textContent = date.toLocaleTimeString("et-EE", clockOptions);
