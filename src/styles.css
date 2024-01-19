@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    font-family: "Quicksand", sans-serif;
+    color: white;
+  }
+  
+  body {
+    background: linear-gradient(164deg, #052f55 0%, #9af1d2 100%);
+    margin: 0;
+  }
+  
