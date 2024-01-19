@@ -22,6 +22,7 @@ yarn-error.log
 .editorconfig
 
 # Visual Studio Code
+.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -37,7 +38,6 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
-ANGULAR-DEFAULT-README.md
 
 # System files
 .DS_Store
