@@ -4,7 +4,8 @@
   }
   
   body {
-    background: linear-gradient(164deg, #052f55 0%, #9af1d2 100%);
+    background: url("assets/marble.jpg");
+    background-size: cover;
     margin: 0;
   }
   
