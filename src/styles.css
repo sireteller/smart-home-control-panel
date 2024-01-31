@@ -1,11 +1,16 @@
 * {
-    font-family: "Quicksand", sans-serif;
-    color: white;
-  }
-  
-  body {
-    background: url("assets/marble.jpg");
-    background-size: cover;
-    margin: 0;
-  }
-  
+  font-family: "Quicksand", sans-serif;
+  color: white;
+}
+
+html,
+body,
+app-root {
+  height: 100vmin;
+}
+
+body {
+  background: url("assets/marble.jpg");
+  background-size: cover;
+  margin: 0;
+}

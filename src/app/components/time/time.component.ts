@@ -24,7 +24,7 @@ export class TimeComponent implements OnInit, OnDestroy {
 
   updateTime() {
     const date = new Date();
-    this.clock = formatDate(date, 'HH:mm', 'en-EE');
-    this.date = formatDate(date, 'dd MMM YYYY', 'en-EE');
+    this.clock = formatDate(date, 'HH mm', 'en-EE');
+    this.date = formatDate(date, 'dd MMM', 'en-EE');
   }
 }
