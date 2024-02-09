@@ -1,3 +1,12 @@
+:host {
+  --color-glow-gloss: rgba(203, 216, 241, 0.4);
+  --color-glow-shadow: rgba(21, 33, 56, 0.4);
+  --color-glow-ambient-narrow: rgb(241, 227, 147);
+  --color-glow-ambient-wide: rgb(253, 207, 56);
+  --color-glow-spinning-narrow: rgba(226, 234, 248, 1);
+  --color-glow-spinning-wide: rgba(243, 177, 34, 0.6);
+}
+
 .nav-menu-container {
   align-items: center;
   backdrop-filter: blur(10px);
@@ -21,10 +30,174 @@ a {
     rgba(6, 22, 23, 0) 100%
   );
   border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(21, 33, 56, 0.4),
-    -1px -1px 5px rgba(203, 216, 241, 0.4), 0 0 4px rgb(241, 227, 147);
+  box-shadow: 2px 2px 5px var(--color-glow-shadow),
+    -1px -1px 5px var(--color-glow-gloss),
+    0 0 4px var(--color-glow-ambient-narrow);
   display: flex;
   height: 2.75rem;
   justify-content: center;
+  transition: box-shadow ease-out 0.1s;
   width: 2.75rem;
+}
+
+a.active {
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-name: alive-glow;
+  background: linear-gradient(
+    45deg,
+    rgba(79, 113, 116, 0.6) 0%,
+    rgba(6, 22, 23, 0.6) 100%
+  );
+}
+
+a:not(.active):hover {
+  box-shadow: -1px -1px 5px var(--color-glow-gloss),
+    0 0 4px var(--color-glow-ambient-narrow),
+    -2px -2px 7px var(--color-glow-spinning-narrow),
+    0 0 7px var(--color-glow-ambient-wide),
+    2px 2px 10px var(--color-glow-spinning-wide);
+  background: linear-gradient(
+    45deg,
+    rgba(79, 113, 116, 0.6) 0%,
+    rgba(209, 231, 169, 0.6) 100%
+  );
+}
+
+@keyframes alive-glow {
+  from {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      -2px -2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      2px 2px 10px var(--color-glow-spinning-wide);
+  }
+
+  6.25% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      -1px -2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      1px 2px 10px var(--color-glow-spinning-wide);
+  }
+
+  12.5% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      0 -2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      0 2px 10px var(--color-glow-spinning-wide);
+  }
+
+  18.75% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      1px -2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      -1px 2px 10px var(--color-glow-spinning-wide);
+  }
+
+  25% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      2px -2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      -2px 2px 10px var(--color-glow-spinning-wide);
+  }
+
+  31.25% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      2px -1px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      -2px 1px 10px var(--color-glow-spinning-wide);
+  }
+
+  37.5% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      2px 0 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      -2px 0 10px var(--color-glow-spinning-wide);
+  }
+
+  43.75% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      2px 1px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      -2px -1px 10px var(--color-glow-spinning-wide);
+  }
+
+  50% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      2px 2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      -2px -2px 10px var(--color-glow-spinning-wide);
+  }
+
+  56.25% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      1px 2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      -1px -2px 10px var(--color-glow-spinning-wide);
+  }
+
+  62.5% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      0 2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      0 -2px 10px var(--color-glow-spinning-wide);
+  }
+
+  68.75% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      -1px 2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      1px -2px 10px var(--color-glow-spinning-wide);
+  }
+
+  75% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      -2px 2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      2px -2px 10px var(--color-glow-spinning-wide);
+  }
+
+  81.25% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      -2px 1px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      2px -1px 10px var(--color-glow-spinning-wide);
+  }
+
+  87.5% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      -2px 0 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      2px 0 10px var(--color-glow-spinning-wide);
+  }
+
+  93.75% {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      -2px -1px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      2px 1px 10px var(--color-glow-spinning-wide);
+  }
+
+  to {
+    box-shadow: -1px -1px 5px var(--color-glow-gloss),
+      0 0 4px var(--color-glow-ambient-narrow),
+      -2px -2px 7px var(--color-glow-spinning-narrow),
+      0 0 7px var(--color-glow-ambient-wide),
+      2px 2px 10px var(--color-glow-spinning-wide);
+  }
 }
