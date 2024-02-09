@@ -5,6 +5,8 @@
   --color-glow-ambient-wide: rgb(253, 207, 56);
   --color-glow-spinning-narrow: rgba(226, 234, 248, 1);
   --color-glow-spinning-wide: rgba(243, 177, 34, 0.6);
+
+  margin-right: 1rem;
 }
 
 .nav-menu-container {
