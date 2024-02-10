@@ -1,0 +1,61 @@
+:host {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  background-color: rgb(16, 40, 43);
+  background-size: cover;
+  border-radius: var(--border-radius-medium);
+  display: flex;
+  font-size: 1.75rem;
+  height: 80%;
+  justify-content: center;
+  position: relative;
+  text-shadow: 1px 1px rgb(16, 40, 43), 1px 0px rgb(16, 40, 43),
+    0px 1px rgb(16, 40, 43), 0px 0px rgb(16, 40, 43), -1px 0px rgb(16, 40, 43),
+    -1px -1px rgb(16, 40, 43), 0px -1px rgb(16, 40, 43), 0px 0px 10px rgb(16, 40, 43);
+}
+
+.meal-selection-btn-overlay {
+    background: linear-gradient(
+        -45deg,
+        rgba(16, 40, 43, 0.8) 0%,
+        rgba(16, 40, 43, 0) 100%
+      );
+      border-radius: var(--border-radius-medium);
+    position: absolute;
+    inset: 0;
+}
+
+.meal-selection-btn-title {
+    z-index: 1;
+}
+
+:host::after,
+:host::before {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--border-radius-medium);
+  content: "";
+  height: 100%;
+  position: absolute;
+  transition: transform ease-out 0.2s;
+  z-index: -1;
+}
+
+:host::after {
+  background-color: var(--color-bg-primary);
+}
+
+:host::before {
+  background-color: rgb(241, 227, 147);
+}
+
+:host(:hover) {
+  cursor: pointer;
+}
+
+:host(:hover)::after {
+  transform: rotate(-15deg) translateX(-1.5rem);
+}
+
+:host(:hover)::before {
+  transform: rotate(-25deg) translateX(-2.5rem);
+}

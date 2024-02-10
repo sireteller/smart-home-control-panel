@@ -3,7 +3,7 @@
   --color-glow-shadow: rgba(21, 33, 56, 0.4);
   --color-glow-ambient-narrow: rgb(241, 227, 147);
   --color-glow-ambient-wide: rgb(253, 207, 56);
-  --color-glow-spinning-narrow: rgba(226, 234, 248, 1);
+  --color-glow-spinning-narrow: rgb(226, 234, 248);
   --color-glow-spinning-wide: rgba(243, 177, 34, 0.6);
 
   margin-right: 1rem;

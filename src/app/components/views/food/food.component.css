@@ -4,5 +4,21 @@
   animation-timing-function: ease-in-out;
   backdrop-filter: blur(10px);
   background-color: var(--color-bg-primary);
+  box-sizing: border-box;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
   width: 100%;
+}
+
+app-meal-plan {
+  width: 40%;
+}
+
+.food-actions {
+  align-items: center;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+  justify-items: center;
+  width: 60%;
 }
