@@ -1,27 +1,24 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { StatusService } from '../../../services/status.service';
 import { ShoppinglistService } from '../../../services/shoppinglist.service';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../../card/card.component';
 
 @Component({
-  selector: 'app-calendar',
+  selector: 'app-shopping-list',
   standalone: true,
   imports: [CommonModule, CardComponent],
-  templateUrl: './shoppinglist.component.html'
+  templateUrl: './shopping-list.component.html',
+  styleUrl: './shopping-list.component.css',
 })
-export class ShoppinglistComponent implements OnInit {
- 
+export class ShoppingListComponent implements OnInit {
   list!: any[];
 
-  constructor(private shoppinglistService: ShoppinglistService){
-  }
+  constructor(private shoppingListService: ShoppinglistService) {}
 
   ngOnInit(): void {
-    this.shoppinglistService.getList().subscribe((result) => {
+    this.shoppingListService.getList().subscribe((result) => {
       this.list = result;
       console.log(this.list);
-    })
+    });
   }
-
 }
