@@ -1,6 +1,18 @@
 :host {
-    background-color: var(--color-bg-secondary);
-    border-radius: var(--border-radius-medium);
-    height: 100%;
-    padding: 0.5rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--border-radius-medium);
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.meal-plan-day__day-name {
+  margin-bottom: 0.5rem;
+}
+
+.meal-plan-day__meals {
+  display: grid;
+  gap: 1rem;
+  grid-template: 1fr / repeat(2, 1fr);
+  /* 100% results in overflow, 1.75rem should be height of weekday text */
+  height: calc(100% - 1.75rem);
 }

@@ -16,11 +16,11 @@ export class MealPlanComponent implements OnInit {
   ngOnInit() {
     const currentDate = new Date();
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 7; i++) {
       const date = new Date();
       date.setDate(date.getDate() + i);
 
-      const day = { weekday: formatDate(date, 'EEEE / dd MMM', 'en-EE') };
+      const day = { weekday: formatDate(date, 'EE / dd MMM', 'en-EE') };
 
       this.days.push(day);
     }
