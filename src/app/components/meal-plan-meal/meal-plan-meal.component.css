@@ -8,20 +8,30 @@
   justify-content: center;
   padding: 0.5rem;
   position: relative;
+  text-shadow: 1px 1px rgb(16, 40, 43), 1px 0px rgb(16, 40, 43),
+    0px 1px rgb(16, 40, 43), 0px 0px rgb(16, 40, 43), -1px 0px rgb(16, 40, 43),
+    -1px -1px rgb(16, 40, 43), 0px -1px rgb(16, 40, 43),
+    0px 0px 10px rgb(16, 40, 43);
   width: 100%;
 }
 
 .meal-plan-meal__img {
   background-color: rgb(56, 92, 124);
+  background-position: right;
+  background-repeat: no-repeat;
   background-size: contain;
   border-radius: var(--border-radius-medium);
-  clip-path: polygon(100% 0, 50% 100%, 100% 100%);
-  content: "";
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 50% 100%);
   inset: 0;
   position: absolute;
+  transition: clip-path ease 0.2s;
   z-index: 0;
 }
 
 .meal-plan-meal__title {
   z-index: 1;
+}
+
+.meal-plan-meal:hover .meal-plan-meal__img {
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 70% 100%);
 }

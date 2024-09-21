@@ -1,9 +1,11 @@
 <h1>Shopping list</h1>
 
-<input type="text" /> <button>Add</button>
-
 <div *ngIf="!list">Loading...</div>
 
-<ul *ngIf="list">
-  <li *ngFor="let item of list">{{ item.name }} - {{ item.details }}</li>
-</ul>
+<ng-container *ngIf="list">
+  <input type="text" /> <button>Add</button>
+
+  <ul>
+    <li *ngFor="let item of list">{{ item.name }} - {{ item.details }}</li>
+  </ul>
+</ng-container>
