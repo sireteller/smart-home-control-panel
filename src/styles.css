@@ -23,6 +23,29 @@ body {
   margin: 0;
 }
 
+h1 {
+  font-weight: 400;
+  margin: 0 0 1.5rem;
+  position: relative;
+  width: max-content;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 0.5rem;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  bottom: -0.5rem;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+}
+
 button {
   border: none;
   cursor: pointer;

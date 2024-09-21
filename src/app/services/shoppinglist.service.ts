@@ -2,17 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API } from '../api';
+import { ShoppingListCategory } from '../models/shopping-list.model';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class ShoppinglistService {
-  
-    constructor(private http: HttpClient) {
-    }
+  constructor(private http: HttpClient) {}
 
-    getList(): Observable<any> {
-        return this.http.get(API.shoppinglist.list);
-    }
-
+  getList(): Observable<ShoppingListCategory[]> {
+    return this.http.get<ShoppingListCategory[]>(API.shoppinglist.list);
+  }
 }

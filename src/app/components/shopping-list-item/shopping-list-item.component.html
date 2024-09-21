@@ -1,0 +1,21 @@
+<div>
+  <div
+    [class]="{
+      'shopping-list-item__name': true,
+      'shopping-list-item__name--selected': item.selected
+    }"
+  >
+    {{ item.name }}
+  </div>
+  <div *ngIf="item.details" class="shopping-list-item__details">
+    {{ item.details }}
+  </div>
+</div>
+<div class="shopping-list-item__actions">
+  <button class="shopping-list-item__action shopping-list-item__action--edit">
+    Edit
+  </button>
+  <button class="shopping-list-item__action shopping-list-item__action--remove">
+    Rm
+  </button>
+</div>

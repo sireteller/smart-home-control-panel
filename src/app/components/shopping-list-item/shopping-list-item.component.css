@@ -1,0 +1,36 @@
+:host {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.shopping-list-item__name.shopping-list-item__name--selected {
+  text-decoration: line-through;
+}
+
+.shopping-list-item__details {
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+.shopping-list-item__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.shopping-list-item__action {
+  border-radius: var(--border-radius-medium);
+  height: 2rem;
+  width: 2rem;
+}
+
+.shopping-list-item__action.shopping-list-item__action--edit {
+  background-color: yellow;
+}
+
+.shopping-list-item__action.shopping-list-item__action--remove {
+  background-color: red;
+}
