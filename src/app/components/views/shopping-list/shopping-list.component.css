@@ -1,9 +1,38 @@
+:host {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .shopping-list__content {
-  max-width: 30rem;
+  max-width: 40rem;
+  width: 100%;
+}
+
+.shopping-list__input-container {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0 0.5rem 0 0;
+}
+
+.shopping-list__input {
+  width: 100%;
+}
+
+.shopping-list__add-btn {
+  background-color: green;
+  border-radius: var(--border-radius-small);
+  flex-shrink: 0;
+  height: 2rem;
+  width: 2rem;
 }
 
 .shopping-list__lists {
-  /* horrible height hack tbh but i dont have the energy to chase down a better solution right now */
+  animation: load-in 0.2s linear;
+  /* horrible height hack tbh but i dont have the energy to chase down a better solution right now
+     (100vh - height of non-list content) */
   max-height: calc(100vh - 7rem);
   overflow: auto;
 }
@@ -15,5 +44,15 @@ ul {
 }
 
 li:not(:last-child) {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+@keyframes load-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

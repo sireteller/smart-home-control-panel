@@ -3,7 +3,10 @@
 <div *ngIf="!list">Loading...</div>
 
 <div *ngIf="list" class="shopping-list__content">
-  <input type="text" /> <button>Add</button>
+  <div class="shopping-list__input-container">
+    <input type="text" class="shopping-list__input" />
+    <button class="shopping-list__add-btn">Add</button>
+  </div>
 
   <div class="shopping-list__lists">
     <div *ngFor="let cat of list">

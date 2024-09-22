@@ -22,7 +22,7 @@
 }
 
 .shopping-list-item__action {
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-small);
   height: 2rem;
   width: 2rem;
 }
