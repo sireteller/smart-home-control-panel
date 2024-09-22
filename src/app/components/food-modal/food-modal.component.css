@@ -1,0 +1,16 @@
+:host {
+    display: block; 
+    position: absolute; 
+    z-index: 1; 
+    
+    right: 0;
+    top: 2%;
+    width: 60%; 
+    height: 96%; 
+    overflow: auto; 
+    background-color: gray;
+}
+
+button {
+    background-color: black;
+}

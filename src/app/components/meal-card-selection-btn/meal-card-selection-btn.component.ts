@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-meal-card-selection-btn',
@@ -8,5 +8,12 @@ import { Component, Input } from '@angular/core';
   styleUrl: './meal-card-selection-btn.component.css'
 })
 export class MealCardSelectionBtnComponent {
+
   @Input() cardTitle!: string;
+  @Output() clicked = new EventEmitter<string>();
+
+  handleClick() {
+    this.clicked.emit(this.cardTitle);
+  }
+  
 }

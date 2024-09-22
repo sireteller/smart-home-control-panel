@@ -1,0 +1,15 @@
+<button class="button" (click)="closeModal()" [style]="{position: 'absolute', top: 0, right: 0}">Close</button>
+<img *ngIf="meal.mealImageUrl" [src]="getFullImageURL()" [style]="{height: '200px'}">
+<div>
+    <label>Image: {{ meal.mealImageFileName }}</label>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+</div>
+<div>
+    <form>
+        <label>Meal name:</label>
+        <input type="text" [value]="meal.name">
+        <div>
+            <input type="submit" value="Save"/>
+        </div>
+    </form>
+</div>

@@ -2,13 +2,33 @@
 <div class="food-actions">
   <app-meal-card-selection-btn
     cardTitle="Meals"
+    (clicked)="openFoodModal($event)"
     style="
       background-image: url('https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466_1280.jpg');
     "
   ></app-meal-card-selection-btn>
   <app-meal-card-selection-btn
     cardTitle="Special"
+    (clicked)="openFoodModal($event)"
   ></app-meal-card-selection-btn>
-  <app-meal-card-selection-btn cardTitle="Sides"></app-meal-card-selection-btn>
-  <app-meal-card-selection-btn cardTitle="Mains"></app-meal-card-selection-btn>
+  <app-meal-card-selection-btn 
+    cardTitle="Sides" 
+    (clicked)="openFoodModal($event)">
+  </app-meal-card-selection-btn>
+  <app-meal-card-selection-btn 
+    cardTitle="Mains" 
+    (clicked)="openFoodModal($event)">
+  </app-meal-card-selection-btn>
 </div>
+<app-food-modal 
+  *ngIf="openedModalName" 
+  [title]="openedModalName" 
+  (modalEditOpened)="openMealEditModal($event)"
+  (modalEditClosed)="closeMealEditModal()"
+  (modalClosed)="closeFoodModal()">
+</app-food-modal>
+<app-meal-edit-modal
+  *ngIf="editingMeal"
+  [meal]="editingMeal"
+  (modalClosed)="closeMealEditModal()">
+</app-meal-edit-modal>
