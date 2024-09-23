@@ -10,15 +10,19 @@ import { Meal } from '../models/food.model';
 export class MealService {
   constructor(private http: HttpClient) {}
 
-  getMeal(id: number) {
-    return this.http.get<Meal>(API.meals.meal(id));
+  getMeal(id: number): Observable<Meal> {
+    return this.http.get<Meal>(API.meals.mealId(id));
   }
 
   getMeals(category: string): Observable<Meal[]> {
-    return this.http.get<Meal[]>(API.meals.list, { 
+    return this.http.get<Meal[]>(API.meals.meals, { 
       params: {
         category: category  
       }
     });
+  }
+
+  saveMeal(mealFormData: FormData): Observable<void> {
+    return this.http.post<void>(API.meals.meals, mealFormData); 
   }
 }

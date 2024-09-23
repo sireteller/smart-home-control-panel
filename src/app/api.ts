@@ -6,7 +6,7 @@ export const API = {
         list: `${environment.apiBaseUrl}/shopping-list`
     },
     meals: {
-        meal: (id: number) => `${environment.apiBaseUrl}/meals/${id}`,
-        list: `${environment.apiBaseUrl}/meals`
+        meals: `${environment.apiBaseUrl}/meals`,
+        mealId: (id: number) => `${environment.apiBaseUrl}/meals/${id}`,
     }
 };

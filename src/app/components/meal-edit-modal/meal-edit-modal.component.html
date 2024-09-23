@@ -1,15 +1,14 @@
-<button class="button" (click)="closeModal()" [style]="{position: 'absolute', top: 0, right: 0}">Close</button>
-<img *ngIf="meal.mealImageUrl" [src]="getFullImageURL()" [style]="{height: '200px'}">
+<button class="button" (click)="closeModal(false)" [style]="{position: 'absolute', top: 0, right: 0}">Close</button>
+<img [src]="imagePreview ? imagePreview : '/assets/meal-placeholder.png'" [style]="{height: '300px'}">
 <div>
-    <label>Image: {{ meal.mealImageFileName }}</label>
-    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
-</div>
-<div>
-    <form>
-        <label>Meal name:</label>
-        <input type="text" [value]="meal.name">
+    <form [formGroup]="mealForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
         <div>
-            <input type="submit" value="Save"/>
+            <label for="name">Meal name:</label>
+            <input id="name" formControlName="name" placeholder="Name..." type="text" />
+        </div>
+        <div>
+            <button type="submit" [disabled]="!mealForm.valid">{{ meal.id ? 'Save meal' : 'Add meal' }}</button>
         </div>
     </form>
 </div>

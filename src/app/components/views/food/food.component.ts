@@ -30,8 +30,11 @@ export class FoodComponent {
     this.editingMeal = $event;
   }
 
-  closeMealEditModal() {
+  closeMealEditModal(updated: boolean) {
     this.editingMeal = null;
+    if (updated) { // TODO refresh food modal instead of close some how
+      this.closeFoodModal();
+    }
   }
   
 }

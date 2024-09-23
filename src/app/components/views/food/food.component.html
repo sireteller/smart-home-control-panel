@@ -24,11 +24,10 @@
   *ngIf="openedModalName" 
   [title]="openedModalName" 
   (modalEditOpened)="openMealEditModal($event)"
-  (modalEditClosed)="closeMealEditModal()"
   (modalClosed)="closeFoodModal()">
 </app-food-modal>
 <app-meal-edit-modal
   *ngIf="editingMeal"
   [meal]="editingMeal"
-  (modalClosed)="closeMealEditModal()">
+  (modalClosed)="closeMealEditModal($event)">
 </app-meal-edit-modal>
