@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MealPlanComponent } from '../../meal-plan/meal-plan.component';
 import { MealCardSelectionBtnComponent } from '../../meal-card-selection-btn/meal-card-selection-btn.component';
-import { FoodModalComponent } from '../../meal-selection-modal/meal-selection-modal.component';
+import { MealSelectionModalComponent } from '../../meal-selection-modal/meal-selection-modal.component';
 import { CommonModule } from '@angular/common';
 import { Meal } from '../../../models/food.model';
 import { MealEditModal } from '../../meal-edit-modal/meal-edit-modal.component';
@@ -13,7 +13,7 @@ import { MealEditModal } from '../../meal-edit-modal/meal-edit-modal.component';
     CommonModule,
     MealPlanComponent,
     MealCardSelectionBtnComponent,
-    FoodModalComponent,
+    MealSelectionModalComponent,
     MealEditModal,
   ],
   templateUrl: './food.component.html',
@@ -22,6 +22,8 @@ import { MealEditModal } from '../../meal-edit-modal/meal-edit-modal.component';
 export class FoodComponent {
   openedModalName: string | null = null;
   editingMeal: Meal | null = null;
+
+  @ViewChild(MealSelectionModalComponent) mealSelection!: MealSelectionModalComponent;
 
   openFoodModal($event: string) {
     this.openedModalName = $event;
@@ -37,9 +39,8 @@ export class FoodComponent {
 
   closeMealEditModal(updated: boolean) {
     this.editingMeal = null;
-    if (updated) {
-      // TODO refresh food modal instead of close somehow
-      this.closeFoodModal();
+    if (updated && this.mealSelection) {
+      this.mealSelection.loadMeals();
     }
   }
 }

@@ -22,7 +22,11 @@ export class MealService {
     });
   }
 
-  saveMeal(mealFormData: FormData): Observable<void> {
-    return this.http.post<void>(API.meals.meals, mealFormData); 
+  saveMeal(meal: Meal): Observable<Meal> {
+    return this.http.post<Meal>(API.meals.meals, meal); 
+  }
+
+  deleteMeal(id: number): Observable<void> {
+    return this.http.delete<void>(API.meals.mealId(id)); 
   }
 }

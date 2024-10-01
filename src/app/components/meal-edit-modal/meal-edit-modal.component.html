@@ -107,6 +107,15 @@
       >
         <img src="../../../assets/check-solid.svg" width="20" />
       </button>
+      <button
+        *ngIf="meal.id"
+        type="button"
+        [disabled]="!mealForm.valid"
+        (click)="deleteMeal()"
+        class="meal-edit-modal__meal-delete-btn"
+      >
+        <img src="../../../assets/trash-can-solid.svg" width="20" />
+      </button>
     </form>
   </div>
 </div>

@@ -54,7 +54,8 @@ div[class*="__img-upload-btn"]:hover {
   box-shadow: var(--box-shadow-static-glow);
 }
 
-button[class*="__add-btn"] {
+button[class*="__add-btn"],
+button[class*="__form-submit-btn"] {
   right: 4.5rem;
 }
 
@@ -62,7 +63,10 @@ button[class*="__close-btn"] {
   right: 1rem;
 }
 
-button[class*="__form-submit-btn"],
+button[class*="__meal-delete-btn"] {
+  right: 8rem;
+}
+
 button[class*="__ingredients-add-btn"],
 button[class*="__ingredient-quantity-decrease-btn"],
 button[class*="__ingredient-quantity-increase-btn"],

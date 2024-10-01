@@ -2,7 +2,7 @@
   <div
     [class]="{
       'shopping-list-item__name': true,
-      'shopping-list-item__name--selected': item.selected
+      'shopping-list-item__name--selected': item.checked
     }"
   >
     {{ item.name }}
@@ -15,7 +15,7 @@
   <button class="shopping-list-item__action shopping-list-item__action--edit">
     Edit
   </button>
-  <button class="shopping-list-item__action shopping-list-item__action--remove">
+  <button class="shopping-list-item__action shopping-list-item__action--remove" (click)="handleDeleted()">
     Rm
   </button>
 </div>

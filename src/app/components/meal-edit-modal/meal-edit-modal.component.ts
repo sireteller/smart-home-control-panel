@@ -10,6 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ShoppingListService } from '../../services/shoppinglist.service';
+import { ImageService } from '../../services/image.service';
 
 @Component({
   selector: 'app-meal-edit-modal',
@@ -23,13 +24,13 @@ export class MealEditModal implements OnInit {
   @Output() modalClosed = new EventEmitter<boolean>();
 
   closing: boolean = false;
-  imagePreview!: string | ArrayBuffer | null;
+  imagePreview!: string | null;
   mealForm!: FormGroup;
-  selectedFile!: File;
   recentIngredients!: any[];
 
   constructor(
     private formBuilder: FormBuilder,
+    private imageService: ImageService,
     private mealService: MealService,
     private shoppingListService: ShoppingListService
   ) {}
@@ -39,34 +40,43 @@ export class MealEditModal implements OnInit {
       name: [this.meal.name, Validators.required],
       ingredients: ['', Validators.nullValidator],
     });
+    this.mealForm.valueChanges.subscribe(formValue => {
+      this.meal.name = formValue.name;
+    });
     if (this.meal.id) {
       //this.mealService.getMeal(this.meal.id).subscribe((meal) => {
       //    this.meal = meal;
       //});
     }
     if (this.meal.mealImageUrl) {
-      if (this.meal.mealImageUrl.startsWith('/')) {
-        this.imagePreview = environment.apiBaseUrl + this.meal.mealImageUrl;
-      } else {
-        this.imagePreview = this.meal.mealImageUrl;
-      }
+      this.setImagePreviewUrl(this.meal.mealImageUrl);
     }
+    this.loadRecentIngredients();
+  }
 
+  loadRecentIngredients() {
     this.shoppingListService.getRecent().subscribe((items) => {
       this.recentIngredients = items;
     });
   }
 
+  setImagePreviewUrl(imageUrl: string) {
+    if (imageUrl.startsWith('/')) {
+      this.imagePreview = environment.apiBaseUrl + imageUrl;
+    } else {
+      this.imagePreview = imageUrl;
+    }
+  }
+
   onFileSelected(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files.length) {
-      this.selectedFile = fileInput.files[0];
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result;
-      };
-      reader.readAsDataURL(this.selectedFile);
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+      this.imageService.uploadImage(formData).subscribe((image: any) => {
+        this.meal.mealImageId = image.id;
+        this.setImagePreviewUrl(image.imageUrl);
+      });
     }
   }
 
@@ -118,20 +128,21 @@ export class MealEditModal implements OnInit {
   }
 
   onSubmit() {
-    if (!this.mealForm.valid || (!this.meal.id && !this.selectedFile)) {
+    if (!this.mealForm.valid) {
       return;
     }
 
-    const formData = new FormData();
-    if (this.meal.id) {
-      formData.append('id', this.meal.id.toString());
-    }
-    formData.append('name', this.mealForm.get('name')?.value);
-    formData.append('category', this.meal.category);
-    formData.append('image', this.selectedFile);
-    this.mealService.saveMeal(formData).subscribe(() => {
+    this.mealService.saveMeal(this.meal).subscribe(() => {
       this.closeModal(true);
     });
+  }
+
+  deleteMeal() {
+    if (this.meal.id) {
+      this.mealService.deleteMeal(this.meal.id).subscribe(() => {
+        this.closeModal(true);
+      });
+    }
   }
 
   closeModal(updated: boolean) {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ShoppingListItem } from '../../models/shopping-list.model';
 import { CommonModule } from '@angular/common';
 
@@ -11,4 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class ShoppingListItemComponent {
   @Input() item!: ShoppingListItem;
+  @Output() deleted = new EventEmitter<ShoppingListItem>();
+
+  handleDeleted() {
+    this.deleted.emit(this.item);
+  }
 }

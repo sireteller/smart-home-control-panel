@@ -1,12 +1,14 @@
 export type ShoppingListCategory = {
+  id: string,
   category: string;
   items: ShoppingListItem[];
 };
 
 export type ShoppingListItem = {
-  id: string;
-  name: string;
-  category: string;
-  details: string;
-  selected: boolean;
+  identifier: string,
+  name: string,
+  details: string,
+  quantity: number | undefined,
+  checked: boolean,
+  categoryMatchId: string
 };

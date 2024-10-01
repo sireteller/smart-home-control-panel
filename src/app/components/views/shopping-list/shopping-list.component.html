@@ -1,19 +1,25 @@
 <h1>Shopping list</h1>
 
-<div *ngIf="!list">Loading...</div>
+<div *ngIf="!categories">Loading...</div>
 
-<div *ngIf="list" class="shopping-list__content">
+<div *ngIf="categories" class="shopping-list__content">
   <div class="shopping-list__input-container">
-    <input type="text" class="shopping-list__input" />
-    <button class="shopping-list__add-btn">Add</button>
+    <input [(ngModel)]="name" type="text" list="recent-items" class="shopping-list__input" />
+    <button class="shopping-list__add-btn" (click)="addItem()">Add</button>
+    <datalist *ngIf="recentItems" id="recent-items">
+      <option
+        *ngFor="let ingredient of recentItems"
+        [value]="ingredient.name"
+      ></option>
+    </datalist>
   </div>
 
   <div class="shopping-list__lists">
-    <div *ngFor="let cat of list">
+    <div *ngFor="let cat of categories">
       <h2>{{ cat.category }}</h2>
       <ul>
         <li *ngFor="let item of cat.items">
-          <app-shopping-list-item [item]="item"></app-shopping-list-item>
+          <app-shopping-list-item [item]="item" (deleted)="deleteItem($event)"></app-shopping-list-item>
         </li>
       </ul>
     </div>

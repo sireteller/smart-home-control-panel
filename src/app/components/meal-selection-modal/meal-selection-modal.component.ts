@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './meal-selection-modal.component.html',
   styleUrl: './meal-selection-modal.component.css',
 })
-export class FoodModalComponent implements OnInit {
+export class MealSelectionModalComponent implements OnInit {
   @Input() title!: string;
   @Output() modalClosed = new EventEmitter<void>();
   @Output() modalEditOpened = new EventEmitter<Meal>();
@@ -22,6 +22,10 @@ export class FoodModalComponent implements OnInit {
   constructor(private mealService: MealService) {}
 
   ngOnInit(): void {
+    this.loadMeals();
+  }
+
+  loadMeals() {
     this.mealService.getMeals(this.title).subscribe((meals) => {
       this.meals = meals;
     });
