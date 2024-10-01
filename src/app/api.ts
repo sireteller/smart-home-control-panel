@@ -5,6 +5,9 @@ export const API = {
     shoppinglist: {
         list: `${environment.apiBaseUrl}/shopping-list`
     },
+    anylist: {
+        recent: `${environment.anyListApiBaseUrl}/recent`
+    },
     meals: {
         meals: `${environment.apiBaseUrl}/meals`,
         mealId: (id: number) => `${environment.apiBaseUrl}/meals/${id}`,
