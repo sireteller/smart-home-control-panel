@@ -1,0 +1,11 @@
+<button class="button" (click)="closeModal()" [style]="{position: 'absolute', top: 0, right: 0}">Close</button>
+<h1>{{ title }}</h1>
+<div *ngIf="meals">
+    <div *ngFor="let meal of meals" [style]="{height: '100px', margin: '8px'}">
+        <app-meal-plan-meal
+        [meal]="meal"
+        (clicked)="openMealEditModal(meal)">
+        </app-meal-plan-meal>
+    </div>
+</div>
+<button (click)="openMealEditModal()">Add</button>
