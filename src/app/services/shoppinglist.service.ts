@@ -13,4 +13,8 @@ export class ShoppinglistService {
   getList(): Observable<ShoppingListCategory[]> {
     return this.http.get<ShoppingListCategory[]>(API.shoppinglist.list);
   }
+
+  getRecent(): Observable<any[]> {
+    return this.http.get<any[]>(API.anylist.recent);
+  }
 }
