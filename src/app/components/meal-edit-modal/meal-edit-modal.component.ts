@@ -71,7 +71,10 @@ export class MealEditModal implements OnInit {
   }
 
   onIngredientAdd() {
-    if (!this.mealForm.get('ingredients')?.value) {
+    const ingredientsInput = this.mealForm.get('ingredients');
+    const ingredientsValue = ingredientsInput?.value;
+
+    if (!ingredientsValue) {
       return;
     }
 
@@ -79,11 +82,17 @@ export class MealEditModal implements OnInit {
       this.meal.ingredients = [];
     }
 
+    if (this.meal.ingredients.find((item) => item.name === ingredientsValue)) {
+      ingredientsInput?.setValue('');
+      return;
+    }
+
     this.meal.ingredients?.push({
       name: this.mealForm.get('ingredients')?.value,
       quantity: 1,
     });
-    this.mealForm.get('ingredients')?.setValue('');
+
+    ingredientsInput?.setValue('');
   }
 
   onIngredientDecrease(ingredient: any) {
