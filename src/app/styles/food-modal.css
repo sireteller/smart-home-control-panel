@@ -1,0 +1,99 @@
+:host {
+  bottom: 0;
+  /* 40% + meal plan padding */
+  left: calc(40% + 1rem);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+div[class*="__wrapper"] {
+  animation-duration: 0.3s;
+  animation-name: slide-in;
+  animation-timing-function: ease-out;
+  background-color: var(--color-bg-secondary);
+  backdrop-filter: blur(5px);
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+div[class*="__wrapper--closing"] {
+  animation-name: slide-out;
+}
+
+h2[class*="__title"] {
+  font-size: 1.75rem;
+  margin: 0 0 1.5rem;
+}
+
+button[class*="__add-btn"],
+button[class*="__close-btn"],
+button[class*="__form-submit-btn"],
+div[class*="__img-upload-btn"] {
+  align-items: center;
+  background-color: var(--color-bg-tertiary);
+  border-radius: 100%;
+  box-shadow: var(--box-shadow-dim-glow);
+  cursor: pointer;
+  display: flex;
+  height: 2.25rem;
+  justify-content: center;
+  position: absolute;
+  top: 1rem;
+  transition: box-shadow ease-out 0.1s;
+  width: 2.25rem;
+  z-index: 4;
+}
+
+button[class*="__add-btn"]:hover,
+button[class*="__close-btn"]:hover,
+button[class*="__form-submit-btn"]:hover,
+div[class*="__img-upload-btn"]:hover {
+  box-shadow: var(--box-shadow-static-glow);
+}
+
+button[class*="__add-btn"] {
+  right: 4.5rem;
+}
+
+button[class*="__close-btn"] {
+  right: 1rem;
+}
+
+button[class*="__form-submit-btn"] {
+  position: relative;
+  right: unset;
+  top: 0;
+}
+
+div[class*="__img-upload-btn"] {
+  left: 1.5rem;
+  right: unset;
+  top: 13.25rem;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}

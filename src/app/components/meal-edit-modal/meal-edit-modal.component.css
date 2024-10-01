@@ -1,16 +1,37 @@
-:host {
-  display: block;
-  position: absolute;
-  z-index: 3;
+@import url(../../styles/food-modal.css);
 
-  right: 0;
-  top: 2%;
-  width: 60%;
-  height: 96%;
-  overflow: auto;
-  background-color: gray;
+:host {
+  z-index: 3;
 }
 
-button {
-  background-color: black;
+.meal-edit-modal__image-wrapper {
+  height: 15rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.meal-edit-modal__image {
+  border-radius: var(--border-radius-medium);
+  height: 100%;
+}
+
+.meal-edit-modal__img-upload-label {
+  border: 1px dashed white;
+  border-radius: var(--border-radius-medium);
+  height: 17rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.meal-edit-modal__img-upload-input {
+  display: none;
+}
+
+.meal-edit-modal__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }

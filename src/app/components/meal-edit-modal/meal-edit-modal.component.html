@@ -1,14 +1,59 @@
-<button class="button" (click)="closeModal(false)" [style]="{position: 'absolute', top: 0, right: 0}">Close</button>
-<img [src]="imagePreview ? imagePreview : '/assets/meal-placeholder.png'" [style]="{height: '300px'}">
-<div>
-    <form [formGroup]="mealForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
-        <div>
-            <label for="name">Meal name:</label>
-            <input id="name" formControlName="name" placeholder="Name..." type="text" />
-        </div>
-        <div>
-            <button type="submit" [disabled]="!mealForm.valid">{{ meal.id ? 'Save meal' : 'Add meal' }}</button>
-        </div>
+<div
+  [class]="{
+    'meal-edit-modal__wrapper': true,
+    'meal-edit-modal__wrapper--closing': closing
+  }"
+>
+  <button class="meal-edit-modal__close-btn" (click)="closeModal(false)">
+    <img src="../../../assets/xmark-solid.svg" width="20" />
+  </button>
+  <div class="meal-edit-modal__image-wrapper">
+    <img
+      [src]="imagePreview ? imagePreview : '/assets/meal-placeholder.png'"
+      class="meal-edit-modal__image"
+    />
+  </div>
+  <div>
+    <form
+      [formGroup]="mealForm"
+      (ngSubmit)="onSubmit()"
+      enctype="multipart/form-data"
+    >
+      <label for="image-upload" class="meal-edit-modal__img-upload-label"
+        ><div class="meal-edit-modal__img-upload-btn">
+          <img
+            src="../../../assets/arrow-up-from-bracket-solid.svg"
+            width="20"
+          /></div
+      ></label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        id="image-upload"
+        class="meal-edit-modal__img-upload-input"
+      />
+
+      <div class="meal-edit-modal__form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text" />
+      </div>
+
+      <div class="meal-edit-modal__form-group">
+        <label for="ingredients-input">Ingredients</label>
+        <input id="ingredients-input" list="ingredients-list" />
+        <datalist id="ingredients-list">
+          <option value="Piim"></option>
+        </datalist>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="!mealForm.valid"
+        class="meal-edit-modal__form-submit-btn"
+      >
+        <img src="../../../assets/check-solid.svg" width="20" />
+      </button>
     </form>
+  </div>
 </div>
