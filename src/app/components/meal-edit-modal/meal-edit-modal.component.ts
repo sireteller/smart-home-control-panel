@@ -9,6 +9,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ShoppingListService } from '../../services/shoppinglist.service';
 
 @Component({
   selector: 'app-meal-edit-modal',
@@ -22,18 +23,21 @@ export class MealEditModal implements OnInit {
   @Output() modalClosed = new EventEmitter<boolean>();
 
   closing: boolean = false;
-  selectedFile!: File;
   imagePreview!: string | ArrayBuffer | null;
   mealForm!: FormGroup;
+  selectedFile!: File;
+  recentIngredients!: any[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private mealService: MealService
+    private mealService: MealService,
+    private shoppingListService: ShoppingListService
   ) {}
 
   ngOnInit(): void {
     this.mealForm = this.formBuilder.group({
       name: [this.meal.name, Validators.required],
+      ingredients: ['', Validators.nullValidator],
     });
     if (this.meal.id) {
       //this.mealService.getMeal(this.meal.id).subscribe((meal) => {
@@ -47,6 +51,10 @@ export class MealEditModal implements OnInit {
         this.imagePreview = this.meal.mealImageUrl;
       }
     }
+
+    this.shoppingListService.getRecent().subscribe((items) => {
+      this.recentIngredients = items;
+    });
   }
 
   onFileSelected(event: Event) {
@@ -60,6 +68,44 @@ export class MealEditModal implements OnInit {
       };
       reader.readAsDataURL(this.selectedFile);
     }
+  }
+
+  onIngredientAdd() {
+    if (!this.mealForm.get('ingredients')?.value) {
+      return;
+    }
+
+    if (!this.meal.ingredients) {
+      this.meal.ingredients = [];
+    }
+
+    this.meal.ingredients?.push({
+      name: this.mealForm.get('ingredients')?.value,
+      quantity: 1,
+    });
+    this.mealForm.get('ingredients')?.setValue('');
+  }
+
+  onIngredientDecrease(ingredient: any) {
+    if (ingredient.quantity === 1) {
+      return;
+    }
+
+    ingredient.quantity--;
+  }
+
+  onIngredientIncrease(ingredient: any) {
+    if (ingredient.quantity === 10) {
+      return;
+    }
+
+    ingredient.quantity++;
+  }
+
+  onIngredientRemove(ingredient: any) {
+    this.meal.ingredients = this.meal.ingredients?.filter(
+      (item) => item.name !== ingredient.name
+    );
   }
 
   onSubmit() {

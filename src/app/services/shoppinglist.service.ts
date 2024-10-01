@@ -7,7 +7,7 @@ import { ShoppingListCategory } from '../models/shopping-list.model';
 @Injectable({
   providedIn: 'root',
 })
-export class ShoppinglistService {
+export class ShoppingListService {
   constructor(private http: HttpClient) {}
 
   getList(): Observable<ShoppingListCategory[]> {

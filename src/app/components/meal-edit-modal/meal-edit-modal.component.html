@@ -41,10 +41,62 @@
 
       <div class="meal-edit-modal__form-group">
         <label for="ingredients-input">Ingredients</label>
-        <input id="ingredients-input" list="ingredients-list" />
-        <datalist id="ingredients-list">
-          <option value="Piim"></option>
-        </datalist>
+        <div class="meal-edit-modal__ingredients-input-wrapper">
+          <input
+            id="ingredients-input"
+            formControlName="ingredients"
+            class="meal-edit-modal__ingredients-input"
+            list="ingredients-list"
+          />
+          <datalist *ngIf="recentIngredients" id="ingredients-list">
+            <option
+              *ngFor="let ingredient of recentIngredients"
+              [value]="ingredient.name"
+            ></option>
+          </datalist>
+          <button
+            class="meal-edit-modal__ingredients-add-btn"
+            type="button"
+            (click)="onIngredientAdd()"
+          >
+            <img src="../../../assets/plus-solid.svg" width="20" />
+          </button>
+        </div>
+
+        <ul *ngIf="meal.ingredients" class="meal-edit-modal__ingredients-list">
+          <li
+            *ngFor="let ingredient of meal.ingredients"
+            class="meal-edit-modal__ingredients-list-item"
+          >
+            {{ ingredient.name }}
+            <div class="meal-edit-modal__ingredient-actions">
+              <button
+                class="meal-edit-modal__ingredient-quantity-decrease-btn"
+                (click)="onIngredientDecrease(ingredient)"
+                type="button"
+              >
+                <img src="../../../assets/minus-solid.svg" width="20" />
+              </button>
+              <div class="meal-edit-modal__ingredient-quantity">
+                <span>{{ ingredient.quantity }}</span>
+              </div>
+              <button
+                class="meal-edit-modal__ingredient-quantity-increase-btn"
+                (click)="onIngredientIncrease(ingredient)"
+                type="button"
+              >
+                <img src="../../../assets/plus-solid.svg" width="20" />
+              </button>
+              <button
+                class="meal-edit-modal__ingredient-remove-btn"
+                (click)="onIngredientRemove(ingredient)"
+                type="button"
+              >
+                <img src="../../../assets/trash-can-solid.svg" width="20" />
+              </button>
+            </div>
+          </li>
+        </ul>
       </div>
 
       <button

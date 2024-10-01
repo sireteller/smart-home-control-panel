@@ -1,7 +1,8 @@
 export type Meal = {
-    id?: number;
-    name: string;
-    category: string;
-    mealImageFileName?: string;
-    mealImageUrl?: string;
-}
+  id?: number;
+  ingredients?: any[];
+  name: string;
+  category: string;
+  mealImageFileName?: string;
+  mealImageUrl?: string;
+};

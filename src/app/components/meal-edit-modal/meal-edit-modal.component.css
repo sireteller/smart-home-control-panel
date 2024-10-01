@@ -35,3 +35,49 @@
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
+
+.meal-edit-modal__ingredients-input-wrapper {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.meal-edit-modal__ingredients-input {
+  width: 100%;
+}
+
+.meal-edit-modal__ingredients-add-btn {
+  flex-shrink: 0;
+}
+
+.meal-edit-modal__ingredients-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.meal-edit-modal__ingredients-list-item {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+}
+
+.meal-edit-modal__ingredients-list-item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.meal-edit-modal__ingredient-actions {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.meal-edit-modal__ingredient-quantity {
+  align-items: center;
+  display: flex;
+  min-width: 1rem;
+  justify-content: center;
+}

@@ -32,9 +32,7 @@ h2[class*="__title"] {
   margin: 0 0 1.5rem;
 }
 
-button[class*="__add-btn"],
-button[class*="__close-btn"],
-button[class*="__form-submit-btn"],
+button,
 div[class*="__img-upload-btn"] {
   align-items: center;
   background-color: var(--color-bg-tertiary);
@@ -51,9 +49,7 @@ div[class*="__img-upload-btn"] {
   z-index: 4;
 }
 
-button[class*="__add-btn"]:hover,
-button[class*="__close-btn"]:hover,
-button[class*="__form-submit-btn"]:hover,
+button:hover,
 div[class*="__img-upload-btn"]:hover {
   box-shadow: var(--box-shadow-static-glow);
 }
@@ -66,10 +62,14 @@ button[class*="__close-btn"] {
   right: 1rem;
 }
 
-button[class*="__form-submit-btn"] {
+button[class*="__form-submit-btn"],
+button[class*="__ingredients-add-btn"],
+button[class*="__ingredient-quantity-decrease-btn"],
+button[class*="__ingredient-quantity-increase-btn"],
+button[class*="__ingredient-remove-btn"] {
   position: relative;
   right: unset;
-  top: 0;
+  top: unset;
 }
 
 div[class*="__img-upload-btn"] {

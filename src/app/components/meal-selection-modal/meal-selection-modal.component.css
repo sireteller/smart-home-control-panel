@@ -1,8 +1,23 @@
 @import url(../../styles/food-modal.css);
 
 .meal-selection-modal__meals {
+  animation: load-in 0.2s linear;
   display: grid;
   gap: 1rem;
   grid-auto-rows: 5rem;
   grid-template: 5rem / repeat(2, 1fr);
+}
+
+.meal-selection-modal__add-btn {
+  animation: load-in 0.2s linear;
+}
+
+@keyframes load-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
