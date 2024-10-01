@@ -13,6 +13,10 @@
   --border-radius-small: 0.25rem;
   --border-radius-medium: 0.5rem;
 
+  --box-shadow-dim-glow: 2px 2px 5px var(--color-glow-shadow),
+    -1px -1px 5px var(--color-glow-gloss),
+    0 0 4px var(--color-glow-ambient-narrow);
+
   --box-shadow-static-glow: -1px -1px 5px var(--color-glow-gloss),
     0 0 4px var(--color-glow-ambient-narrow),
     -2px -2px 7px var(--color-glow-spinning-narrow),
@@ -38,6 +42,7 @@ body {
 }
 
 h1 {
+  font-size: 2.25rem;
   font-weight: 400;
   margin: 0 0 1.5rem;
   position: relative;

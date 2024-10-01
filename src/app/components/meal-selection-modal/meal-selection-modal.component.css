@@ -1,16 +1,88 @@
 :host {
-    display: block; 
-    position: absolute; 
-    z-index: 1; 
-    
-    right: 0;
-    top: 2%;
-    width: 60%; 
-    height: 96%; 
-    overflow: auto; 
-    background-color: gray;
+  bottom: 0;
+  /* 40% + meal plan padding */
+  left: calc(40% + 1rem);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
 }
 
-button {
-    background-color: black;
+.meal-selection-modal {
+  animation-duration: 0.3s;
+  animation-name: slide-in;
+  animation-timing-function: ease-out;
+  background-color: var(--color-bg-secondary);
+  backdrop-filter: blur(5px);
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.meal-selection-modal.meal-selection-modal--closing {
+  animation-name: slide-out;
+}
+
+.meal-selection-modal__title {
+  font-size: 1.75rem;
+  margin: 0 0 1.5rem;
+}
+
+.meal-selection-modal__add-btn,
+.meal-selection-modal__close-btn {
+  align-items: center;
+  background-color: var(--color-bg-tertiary);
+  border-radius: 100%;
+  box-shadow: var(--box-shadow-dim-glow);
+  display: flex;
+  height: 2.25rem;
+  justify-content: center;
+  position: absolute;
+  top: 1rem;
+  transition: box-shadow ease-out 0.1s;
+  width: 2.25rem;
+}
+
+.meal-selection-modal__add-btn:hover,
+.meal-selection-modal__close-btn:hover {
+  box-shadow: var(--box-shadow-static-glow);
+}
+
+.meal-selection-modal__add-btn {
+  right: 4.5rem;
+}
+
+.meal-selection-modal__close-btn {
+  right: 1rem;
+}
+
+.meal-selection-modal__meals {
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: 5rem;
+  grid-template: 5rem / repeat(2, 1fr);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
 }

@@ -25,9 +25,7 @@ a {
     rgba(6, 22, 23, 0) 100%
   );
   border-radius: var(--border-radius-medium);
-  box-shadow: 2px 2px 5px var(--color-glow-shadow),
-    -1px -1px 5px var(--color-glow-gloss),
-    0 0 4px var(--color-glow-ambient-narrow);
+  box-shadow: var(--box-shadow-dim-glow);
   display: flex;
   height: 2.75rem;
   justify-content: center;

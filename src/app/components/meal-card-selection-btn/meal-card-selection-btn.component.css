@@ -10,11 +10,16 @@
   height: 80%;
   justify-content: center;
   position: relative;
+  transition: transform ease-out 0.2s;
+}
+
+button {
+  background-color: transparent;
+  color: white;
   text-shadow: 1px 1px rgb(16, 40, 43), 1px 0px rgb(16, 40, 43),
     0px 1px rgb(16, 40, 43), 0px 0px rgb(16, 40, 43), -1px 0px rgb(16, 40, 43),
     -1px -1px rgb(16, 40, 43), 0px -1px rgb(16, 40, 43),
     0px 0px 10px rgb(16, 40, 43);
-  transition: transform ease-out 0.2s;
 }
 
 .meal-selection-btn-overlay {
@@ -31,6 +36,7 @@
 }
 
 .meal-selection-btn-title {
+  position: relative;
   z-index: 1;
 }
 

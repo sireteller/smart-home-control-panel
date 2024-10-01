@@ -1,11 +1,22 @@
-<button class="button" (click)="closeModal()" [style]="{position: 'absolute', top: 0, right: 0}">Close</button>
-<h1>{{ title }}</h1>
-<div *ngIf="meals">
-    <div *ngFor="let meal of meals" [style]="{height: '100px', margin: '8px'}">
-        <app-meal-plan-meal
-        [meal]="meal"
-        (clicked)="openMealEditModal(meal)">
-        </app-meal-plan-meal>
-    </div>
+<div
+  [class]="{
+    'meal-selection-modal': true,
+    'meal-selection-modal--closing': closing
+  }"
+>
+  <button class="meal-selection-modal__close-btn" (click)="closeModal()">
+    <img src="../../../assets/xmark-solid.svg" width="20" />
+  </button>
+  <h2 class="meal-selection-modal__title">{{ title }}</h2>
+  <div *ngIf="meals" class="meal-selection-modal__meals">
+    <app-meal-plan-meal
+      *ngFor="let meal of meals"
+      [meal]="meal"
+      (clicked)="openMealEditModal(meal)"
+    >
+    </app-meal-plan-meal>
+  </div>
+  <button class="meal-selection-modal__add-btn" (click)="openMealEditModal()">
+    <img src="../../../assets/plus-solid.svg" width="20" />
+  </button>
 </div>
-<button (click)="openMealEditModal()">Add</button>

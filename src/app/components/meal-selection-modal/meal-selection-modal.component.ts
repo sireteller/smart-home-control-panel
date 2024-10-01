@@ -16,6 +16,7 @@ export class FoodModalComponent implements OnInit {
   @Output() modalClosed = new EventEmitter<void>();
   @Output() modalEditOpened = new EventEmitter<Meal>();
 
+  closing: boolean = false;
   meals!: Meal[];
 
   constructor(private mealService: MealService) {}
@@ -35,6 +36,10 @@ export class FoodModalComponent implements OnInit {
   }
 
   closeModal() {
-    this.modalClosed.emit();
+    this.closing = true;
+
+    setTimeout(() => {
+      this.modalClosed.emit();
+    }, 300);
   }
 }

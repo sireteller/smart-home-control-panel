@@ -38,7 +38,7 @@ export class FoodComponent {
   closeMealEditModal(updated: boolean) {
     this.editingMeal = null;
     if (updated) {
-      // TODO refresh food modal instead of close some how
+      // TODO refresh food modal instead of close somehow
       this.closeFoodModal();
     }
   }
