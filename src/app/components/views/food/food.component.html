@@ -1,5 +1,5 @@
 <app-meal-plan></app-meal-plan>
-<div class="food-actions">
+<div class="food__actions">
   <app-meal-card-selection-btn
     cardTitle="Meals"
     (clicked)="openFoodModal($event)"
@@ -35,3 +35,12 @@
   (modalClosed)="closeMealEditModal($event)"
 >
 </app-meal-edit-modal>
+
+<div
+  *ngIf="showTrashcan"
+  [class]="{ food__trashcan: true, 'food__trashcan--dragover': trashDragOver }"
+  (dragenter)="trashOnDragEnter($event)"
+  (dragover)="trashOnDragOver($event)"
+  (dragleave)="trashOnDragLeave()"
+  (drop)="trashOnDrop($event)"
+></div>

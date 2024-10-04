@@ -5,9 +5,11 @@
   box-sizing: border-box;
   box-shadow: var(--box-shadow-dim-glow);
   display: flex;
+  font-size: 1.25rem;
+  font-weight: 600;
   height: 100%;
-  justify-content: center;
-  padding: 0.5rem;
+  justify-content: start;
+  padding: 1rem;
   position: relative;
   text-shadow: 1px 1px rgb(16, 40, 43), 1px 0px rgb(16, 40, 43),
     0px 1px rgb(16, 40, 43), 0px 0px rgb(16, 40, 43), -1px 0px rgb(16, 40, 43),
@@ -23,7 +25,7 @@
   background-repeat: no-repeat;
   background-size: 50%;
   border-radius: var(--border-radius-medium);
-  clip-path: polygon(100% 0, 100% 0, 100% 100%, 50% 100%);
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 70% 100%);
   inset: 0;
   position: absolute;
   transition: clip-path ease 0.2s;
@@ -39,5 +41,5 @@
 }
 
 .meal-plan-meal:hover .meal-plan-meal__img {
-  clip-path: polygon(50% 0, 100% 0, 100% 100%, 70% 100%);
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 50% 100%);
 }

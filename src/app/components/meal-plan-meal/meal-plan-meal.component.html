@@ -1,7 +1,12 @@
-<button class="meal-plan-meal" (click)="handleClick()">
-<div class="meal-plan-meal__title">{{ meal.name }}</div>
-<div
-  class="meal-plan-meal__img"
-  [style.background-image]="'url(' + getFullImageURL() + ')'"
-></div>
+<button
+  class="meal-plan-meal"
+  draggable="true"
+  (click)="handleClick()"
+  (dragstart)="onDragStart($event)"
+>
+  <div class="meal-plan-meal__title">{{ meal.name }}</div>
+  <div
+    class="meal-plan-meal__img"
+    [style.background-image]="'url(' + getFullImageURL() + ')'"
+  ></div>
 </button>

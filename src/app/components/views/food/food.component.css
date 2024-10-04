@@ -7,10 +7,38 @@ app-meal-plan {
   width: 40%;
 }
 
-.food-actions {
+.food__actions {
   align-items: center;
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(2, 1fr);
   justify-items: center;
   width: 60%;
+}
+
+.food__trashcan {
+  animation-duration: 0.5s;
+  animation-name: slide-up;
+  animation-timing-function: ease-out;
+  background-image: url(../../../../assets/popcat-closed.png);
+  background-size: cover;
+  bottom: 0;
+  height: 10rem;
+  left: -6rem;
+  position: fixed;
+  width: 10rem;
+  z-index: 5;
+}
+
+.food__trashcan--dragover {
+  background-image: url(../../../../assets/popcat-open.png);
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }

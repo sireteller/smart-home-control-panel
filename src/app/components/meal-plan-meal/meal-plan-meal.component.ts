@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Meal } from '../../models/food.model';
 
-
 @Component({
   selector: 'app-meal-plan-meal',
   standalone: true,
@@ -19,9 +18,14 @@ export class MealPlanMealComponent {
   }
 
   getFullImageURL() {
-    if (this.meal.mealImageUrl && this.meal.mealImageUrl.startsWith('/')) {  
+    if (this.meal.mealImageUrl && this.meal.mealImageUrl.startsWith('/')) {
       return environment.apiBaseUrl + this.meal.mealImageUrl;
     }
     return this.meal.mealImageUrl;
+  }
+
+  onDragStart(e: any) {
+    e.dataTransfer.effectAllowed = 'copy';
+    e.dataTransfer.setData('application/json', JSON.stringify(this.meal));
   }
 }

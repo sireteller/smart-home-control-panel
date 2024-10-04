@@ -1,4 +1,12 @@
 <div class="meal-plan-day__day-name">{{ weekday }}</div>
-<div class="meal-plan-day__meals">
-
+<div
+  class="meal-plan-day__meals"
+  (dragenter)="onDragEnter($event)"
+  (dragover)="onDragOver($event)"
+  (drop)="onDrop($event)"
+>
+  <app-meal-plan-meal
+    *ngFor="let meal of meals"
+    [meal]="meal"
+  ></app-meal-plan-meal>
 </div>
