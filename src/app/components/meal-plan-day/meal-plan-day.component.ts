@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MealPlanMealComponent } from '../meal-plan-meal/meal-plan-meal.component';
-import { Meal } from '../../models/food.model';
+import { Meal, MealDragData, MealPlanDay, ScheduledMeal } from '../../models/food.model';
+import { MealService } from '../../services/meal.service';
 
 @Component({
   selector: 'app-meal-plan-day',
@@ -11,9 +12,13 @@ import { Meal } from '../../models/food.model';
   styleUrl: './meal-plan-day.component.css',
 })
 export class MealPlanDayComponent {
-  @Input() weekday!: string;
+  @Input() mealPlanDay!: MealPlanDay;
+
+  @Output() mealAdded = new EventEmitter<void>();
 
   meals: Meal[] = [];
+
+  constructor(private mealService: MealService) {}
 
   onDragEnter(e: any) {
     e.preventDefault();
@@ -23,13 +28,15 @@ export class MealPlanDayComponent {
     e.preventDefault();
   }
 
-  onDrop(e: any) {
-    const newMeal = JSON.parse(e.dataTransfer.getData('application/json'));
+  onDrop(e: any) {  
+    const mealData: MealDragData = JSON.parse(e.dataTransfer.getData('application/json'));
 
-    if (this.meals.find((meal) => meal.id === newMeal.id)) {
-      return;
+    if (mealData.meal.id) {
+      if (!this.mealPlanDay.meals.some(meal => meal.id === mealData.meal.id)) {
+        this.mealService.scheduleMeal(mealData.meal.id, this.mealPlanDay.date).subscribe(() => {
+          this.mealAdded.emit();
+        });
+      }
     }
-
-    this.meals.push(newMeal);
   }
 }

@@ -62,9 +62,9 @@ export class MealEditModal implements OnInit {
 
   setImagePreviewUrl(imageUrl: string) {
     if (imageUrl.startsWith('/')) {
-      this.imagePreview = environment.apiBaseUrl + imageUrl;
+      this.imagePreview = environment.apiBaseUrl + imageUrl + '/medium';
     } else {
-      this.imagePreview = imageUrl;
+      this.imagePreview = imageUrl + '/medium';
     }
   }
 

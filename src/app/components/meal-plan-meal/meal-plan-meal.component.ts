@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Meal } from '../../models/food.model';
+import { Meal, MealDragData } from '../../models/food.model';
 
 @Component({
   selector: 'app-meal-plan-meal',
@@ -10,6 +10,7 @@ import { Meal } from '../../models/food.model';
   styleUrl: './meal-plan-meal.component.css',
 })
 export class MealPlanMealComponent {
+  @Input() scheduledMealId?: number;
   @Input() meal!: Meal;
   @Output() clicked = new EventEmitter<Meal>();
 
@@ -19,13 +20,17 @@ export class MealPlanMealComponent {
 
   getFullImageURL() {
     if (this.meal.mealImageUrl && this.meal.mealImageUrl.startsWith('/')) {
-      return environment.apiBaseUrl + this.meal.mealImageUrl;
+      return environment.apiBaseUrl + this.meal.mealImageUrl + '/small';
     }
-    return this.meal.mealImageUrl;
+    return this.meal.mealImageUrl + '/small';
   }
 
   onDragStart(e: any) {
     e.dataTransfer.effectAllowed = 'copy';
-    e.dataTransfer.setData('application/json', JSON.stringify(this.meal));
+    const dragData: MealDragData = {
+      scheduledMealId: this.scheduledMealId,
+      meal: this.meal
+    };
+    e.dataTransfer.setData('application/json', JSON.stringify(dragData));
   }
 }

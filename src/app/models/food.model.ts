@@ -12,4 +12,20 @@ export type MealIngredient = {
   id?: number;
   name: string;
   quantity: number;
-}
+};
+
+export type ScheduledMeal = {
+  id: number;
+  date: string;
+  meal: Meal; 
+};
+
+export type MealPlanDay = {
+  date: Date;
+  meals: ScheduledMeal[];
+};
+
+export type MealDragData = {
+  scheduledMealId?: number;
+  meal: Meal;
+};

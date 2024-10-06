@@ -1,1 +1,3 @@
-<app-meal-plan-day *ngFor="let day of days" [weekday]="day.weekday"></app-meal-plan-day>
+<app-meal-plan-day *ngFor="let day of mealPlan" [mealPlanDay]="day" (mealAdded)="loadMealPlan()">
+</app-meal-plan-day>
+<app-meal-trash-bin (mealTrashed)="loadMealPlan()"></app-meal-trash-bin>

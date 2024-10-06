@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API } from '../api';
-import { Meal } from '../models/food.model';
+import { Meal, MealPlanDay, ScheduledMeal } from '../models/food.model';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -28,5 +29,26 @@ export class MealService {
 
   deleteMeal(id: number): Observable<void> {
     return this.http.delete<void>(API.meals.mealId(id)); 
+  }
+
+  getMealPlan(from: Date, to: Date): Observable<MealPlanDay[]> {
+    return this.http.get<MealPlanDay[]>(API.meals.mealPlan(), { 
+      params: {
+        from: formatDate(from, 'yyyy-MM-dd', 'en-EE'),
+        to: formatDate(to, 'yyyy-MM-dd', 'en-EE')
+      }
+    })
+  }
+
+  scheduleMeal(mealId: number, date: Date) {
+    return this.http.post(API.meals.scheduleMeal(mealId), undefined, { 
+      params: {
+        date: formatDate(date, 'yyyy-MM-dd', 'en-EE'),
+      }
+    });
+  }
+
+  deleteScheduledMeal(scheduleId: number) {
+    return this.http.delete(API.meals.scheduleMeal(scheduleId));
   }
 }

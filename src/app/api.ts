@@ -9,7 +9,9 @@ export const API = {
     },
     meals: {
         meals: `${environment.apiBaseUrl}/meals`,
-        mealId: (id: number) => `${environment.apiBaseUrl}/meals/${id}`,
+        mealId: (mealId: number) => `${environment.apiBaseUrl}/meals/${mealId}`,
+        mealPlan: () => `${environment.apiBaseUrl}/meals/meal-plan`,
+        scheduleMeal: (mealId: number) => `${environment.apiBaseUrl}/meals/schedule/${mealId}`
     },
     image: {
         upload: `${environment.apiBaseUrl}/image/upload`
