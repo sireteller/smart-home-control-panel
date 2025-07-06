@@ -1,0 +1,5 @@
+:host {
+  --vis-tooltip-background-color: rgba(30,30,30, 0.95);
+  --vis-tooltip-text-color: #e5e9f7;
+  --vis-tooltip-shadow-color: rgba(0,0,0, 0.95);
+}
