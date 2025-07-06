@@ -11,7 +11,7 @@ import {DatePipe, NgIf} from "@angular/common";
 import {BatteryComponent} from "./battery/battery.component";
 import {ElectricityService} from "../../../services/electricity.service";
 import {SettingService} from "../../../services/setting.service";
-import {ElectricityPrice} from "../../../models/electricity.model";
+import {BatteryState, ElectricityPrice} from "../../../models/electricity.model";
 import {interval, Subscription, timer} from "rxjs";
 import {Settings} from "../../../models/settings.model";
 
@@ -44,6 +44,7 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
   ];
   currentX = (): number => this.currentPrice.time
   currentY = [(): number => this.yDomain[1]];
+  chargeY = [1, 1]
   yDomain!: [number, number];
   ticks!: number[];
 
@@ -51,6 +52,8 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
   electricityPrices!: ElectricityPrice[];
   currentPrice!: ElectricityPrice;
   batteryAutomationEnabled!: boolean;
+  batterySOC!: number;
+  batteryState!: BatteryState;
 
   constructor(private datePipe: DatePipe,
               private electricityService: ElectricityService,
@@ -86,6 +89,8 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
     this.electricityService.getElectricityData().subscribe(result => {
       this.electricityPrices = result.electricityPrices;
       this.batteryAutomationEnabled = result.batteryAutomationEnabled;
+      this.batterySOC = result.batterySOC;
+      this.batteryState = result.batteryState;
       this.currentPrice = this.electricityPrices.find(price => price.current)!;
       this.ticks = this.electricityPrices.map(data => data.time).filter((_, index) => index % 2 === 0)
       let min = 0;
@@ -119,6 +124,11 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
   color = (d: ElectricityPrice, i: number) => [
     '#7e7e7e',
     this.blendRGB([144, 232, 255], [255, 0, 0], d.price)
+  ][i];
+
+  chargeColor = (d: ElectricityPrice, i: number) => [
+    'rgba(0,0,0,0)',
+    d.charge ? '#2bc0ff' : 'rgba(0,0,0,0)'
   ][i];
 
   linearInterpolate(a: number, b: number, p: number): number {

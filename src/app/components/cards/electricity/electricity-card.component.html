@@ -6,6 +6,7 @@
       <vis-axis type="y" tickTextColor="#fff"></vis-axis>
       <vis-tooltip [triggers]="triggers" ></vis-tooltip>
       <vis-stacked-bar [x]="currentX" [y]="currentY" [color]="'red'" [barWidth]="1"></vis-stacked-bar>
+      <vis-scatter [x]="x" [y]="chargeY" shape="cross" [color]="chargeColor"></vis-scatter>
     </vis-xy-container>
   </div>
   <div style="display: flex; align-items: center; width: 100%; justify-content: space-between;">
@@ -18,9 +19,13 @@
              (change)="handleBatteryAutomationToggle()" />
       <label for="auto_battery">Battery automation</label>
     </div>
-    <span>Current price: 6.77 senti/kWh</span>
-    <span>Status: Charging</span>
-    <span>Remaining capacity: 12.4kWh</span>
-    <app-battery [percentage]="69"></app-battery>
+    <span>Current price: {{ currentPrice.totalPrice }}</span>
+    <span>
+      Status:
+      <span *ngIf="batteryState == 'CHARGE'">Charging</span>
+      <span *ngIf="batteryState == 'DISCHARGE'">Discharging</span>
+      <span *ngIf="batteryState == 'IDLE'">Idle</span>
+    </span>
+    <app-battery *ngIf="batterySOC" [percentage]="batterySOC"></app-battery>
   </div>
 </ng-container>
