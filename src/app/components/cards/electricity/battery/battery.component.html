@@ -1,0 +1,12 @@
+<svg width="120" height="60" viewBox="0 0 120 60">
+  <!-- Battery outline -->
+  <rect x="2" y="12" width="100" height="36" rx="5" ry="5" stroke="white" stroke-width="2" fill="none"/>
+  <!-- Battery tip -->
+  <rect x="104" y="22" width="6" height="16" rx="2" ry="2" fill="white"/>
+  <!-- Battery fill -->
+  <rect x="4" y="14" rx="3" ry="3" [attr.width]="0.96 * fillWidth" height="32" [attr.fill]="fillColor"/>
+
+  <text x="50" y="35" font-size="16" text-anchor="middle" fill="white">
+    {{ percentage }}%
+  </text>
+</svg>

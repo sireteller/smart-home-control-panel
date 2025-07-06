@@ -1,0 +1,26 @@
+<ng-container *ngIf="electricityPrices">
+  <div class="chart-container">
+    <vis-xy-container [data]="electricityPrices" [yDomain]="yDomain" style="width: 100%;">
+      <vis-stacked-bar [x]="x" [y]="y" [color]="color" [duration]="1000" [barPadding]="0"></vis-stacked-bar>
+      <vis-axis type="x" [tickFormat]="tickFormat" [tickValues]="ticks" [gridLine]="false" tickTextColor="#fff"></vis-axis>
+      <vis-axis type="y" tickTextColor="#fff"></vis-axis>
+      <vis-tooltip [triggers]="triggers" ></vis-tooltip>
+      <vis-stacked-bar [x]="currentX" [y]="currentY" [color]="'red'" [barWidth]="1"></vis-stacked-bar>
+    </vis-xy-container>
+  </div>
+  <div style="display: flex; align-items: center; width: 100%; justify-content: space-between;">
+    <div>
+      <input type="checkbox"
+             id="auto_battery"
+             name="auto_battery"
+             value="1"
+             [checked]="batteryAutomationEnabled"
+             (change)="handleBatteryAutomationToggle()" />
+      <label for="auto_battery">Battery automation</label>
+    </div>
+    <span>Current price: 6.77 senti/kWh</span>
+    <span>Status: Charging</span>
+    <span>Remaining capacity: 12.4kWh</span>
+    <app-battery [percentage]="69"></app-battery>
+  </div>
+</ng-container>

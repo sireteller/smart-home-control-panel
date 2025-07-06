@@ -1,9 +1,11 @@
 .card-container {
-  align-items: center;
   backdrop-filter: blur(10px);
   background-color: var(--color-bg-primary);
   border-radius: var(--border-radius-medium);
-  display: flex;
-  flex-direction: column;
   padding: 1rem;
+}
+
+.card-container h2 {
+  margin: 0 auto;
+  width: fit-content;
 }
