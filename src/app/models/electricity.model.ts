@@ -1,5 +1,5 @@
 export type ElectricityData = {
-  electricityPrices: ElectricityPrice[];
+  electricityHours: ElectricityHour[];
   batteryAutomationEnabled: boolean;
   batterySOC: number;
   batteryState: BatteryState;
@@ -7,7 +7,7 @@ export type ElectricityData = {
 
 export type BatteryState = 'IDLE' | 'CHARGE' | 'DISCHARGE';
 
-export type ElectricityPrice = {
+export type ElectricityHour = {
   time: number;
   price: number;
   serviceFees: number;

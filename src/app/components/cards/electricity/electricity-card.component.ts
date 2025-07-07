@@ -11,7 +11,7 @@ import {DatePipe, NgIf} from "@angular/common";
 import {BatteryComponent} from "./battery/battery.component";
 import {ElectricityService} from "../../../services/electricity.service";
 import {SettingService} from "../../../services/setting.service";
-import {BatteryState, ElectricityPrice} from "../../../models/electricity.model";
+import {BatteryState, ElectricityHour} from "../../../models/electricity.model";
 import {interval, Subscription, timer} from "rxjs";
 import {Settings} from "../../../models/settings.model";
 
@@ -37,10 +37,10 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
   protected readonly CHEAPEST_PRICE = 5;
   protected readonly EXPENSIVE_PRICE = 50;
 
-  x = (d: ElectricityPrice): number => d.time
+  x = (d: ElectricityHour): number => d.time
   y = [
-    (d: ElectricityPrice): number => d.price > 0 ? d.serviceFees : d.totalPrice,
-    (d: ElectricityPrice): number => d.price > 0 ? d.price : 0,
+    (d: ElectricityHour): number => d.price > 0 ? d.serviceFees : d.totalPrice,
+    (d: ElectricityHour): number => d.price > 0 ? d.price : 0,
   ];
   currentX = (): number => this.currentPrice.time
   currentY = [(): number => this.yDomain[1]];
@@ -49,8 +49,8 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
   ticks!: number[];
 
   subscription: Subscription = new Subscription();
-  electricityPrices!: ElectricityPrice[];
-  currentPrice!: ElectricityPrice;
+  electricityPrices!: ElectricityHour[];
+  currentPrice!: ElectricityHour;
   batteryAutomationEnabled!: boolean;
   batterySOC!: number;
   batteryState!: BatteryState;
@@ -87,7 +87,7 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
 
   loadPrices() {
     this.electricityService.getElectricityData().subscribe(result => {
-      this.electricityPrices = result.electricityPrices;
+      this.electricityPrices = result.electricityHours;
       this.batteryAutomationEnabled = result.batteryAutomationEnabled;
       this.batterySOC = result.batterySOC;
       this.batteryState = result.batteryState;
@@ -109,7 +109,7 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
   }
 
   triggers = {
-    [StackedBar.selectors.bar]: (d: ElectricityPrice) => `
+    [StackedBar.selectors.bar]: (d: ElectricityHour) => `
       <span>${this.datePipe.transform(d.time, 'dd.MM HH:mm')}</span></br>
       <span>Price: ${d.price} senti/kWh</span></br>
       <span>Service fees: ${d.serviceFees} senti/kWh</span></br>
@@ -121,12 +121,12 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
     return this.datePipe.transform(tick, 'HH')!;
   };
 
-  color = (d: ElectricityPrice, i: number) => [
+  color = (d: ElectricityHour, i: number) => [
     '#7e7e7e',
     this.blendRGB([144, 232, 255], [255, 0, 0], d.price)
   ][i];
 
-  chargeColor = (d: ElectricityPrice, i: number) => [
+  chargeColor = (d: ElectricityHour, i: number) => [
     'rgba(0,0,0,0)',
     d.charge ? '#2bc0ff' : 'rgba(0,0,0,0)'
   ][i];
