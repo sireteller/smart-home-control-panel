@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CardComponent } from '../../card/card.component';
 import { TimeComponent } from '../../time/time.component';
-import {ElectricityCardComponent} from "../../cards/electricity/electricity-card.component";
+import { ElectricityCardComponent } from "../../cards/electricity/electricity-card.component";
 
 @Component({
   selector: 'app-home',

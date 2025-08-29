@@ -1,0 +1,9 @@
+:host {
+  animation-duration: 0.3s;
+  animation-name: slide-in-page;
+  animation-timing-function: ease-in-out;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 1rem 1rem 1rem 0;
+  width: 100%;
+}
