@@ -1,5 +1,5 @@
 export type ElectricityData = {
-  electricityHours: ElectricityHour[];
+  electricityTimes: ElectricityHour[];
   batteryAutomationEnabled: boolean;
   batterySOC: number;
   batteryState: BatteryState;

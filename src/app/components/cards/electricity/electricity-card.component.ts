@@ -87,12 +87,12 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
 
   loadPrices() {
     this.electricityService.getElectricityData().subscribe(result => {
-      this.electricityPrices = result.electricityHours;
+      this.electricityPrices = result.electricityTimes;
       this.batteryAutomationEnabled = result.batteryAutomationEnabled;
       this.batterySOC = result.batterySOC;
       this.batteryState = result.batteryState;
       this.currentPrice = this.electricityPrices.find(price => price.current)!;
-      this.ticks = this.electricityPrices.map(data => data.time).filter((_, index) => index % 2 === 0)
+      this.ticks = this.electricityPrices.map(data => data.time).filter((_, index) => index % 8 === 0)
       let min = 0;
       let max = 10;
       for (const data of this.electricityPrices) {
