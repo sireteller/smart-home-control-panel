@@ -6,12 +6,13 @@ export type ElectricityData = {
 }
 
 export type BatteryState = 'IDLE' | 'CHARGE' | 'DISCHARGE';
+export type ElectricityState = 'CONSUME' | 'HOLD' | 'CHARGE';
 
 export type ElectricityHour = {
   time: number;
   price: number;
   serviceFees: number;
   totalPrice: number;
-  charge: boolean;
+  state: ElectricityState;
   current: boolean;
 }

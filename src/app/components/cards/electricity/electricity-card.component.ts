@@ -25,7 +25,6 @@ import {Settings} from "../../../models/settings.model";
     VisAxisModule,
     VisStackedBarModule,
     VisTooltipModule,
-    DatePipe,
     BatteryComponent,
     VisCrosshairModule,
     NgIf,
@@ -128,7 +127,7 @@ export class ElectricityCardComponent implements OnInit, OnDestroy {
 
   chargeColor = (d: ElectricityHour, i: number) => [
     'rgba(0,0,0,0)',
-    d.charge ? '#2bc0ff' : 'rgba(0,0,0,0)'
+    d.state === 'CHARGE' ? '#2bc0ff' : d.state === 'HOLD' ? '#ffffff' : 'rgba(0,0,0,0)'
   ][i];
 
   linearInterpolate(a: number, b: number, p: number): number {
